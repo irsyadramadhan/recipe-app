@@ -1,4 +1,77 @@
+/* my class */
+
 img {
-    width: 300px;
+    width: 350px;
     height: 300px;
+}
+
+
+.my-text-blue {
+    color: #2E266F;
+}
+
+.my-bg-yellow {
+    background-color: #EFC81A;
+}
+
+.my-bg-grey {
+    background-color: grey;
+}
+
+/* footer */
+
+footer .firstRow {
+    height: 250px;
+}
+
+footer .firstRow .col-lg-8 {
+    height: 200px;
+}
+
+footer .secondRow {
+    height: 50px;
+}
+
+footer {
+    background-color: #EFC81A;
+}
+
+footer a {
+    margin: 0px 10px;
+}
+
+footer h1 {
+    margin: 50px 0px;
+}
+
+/* nav */
+
+nav .container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+nav .text-start a {
+    margin-right: 50px;
+    margin-top: 25px;
+}
+
+nav .text-end a {
+    margin-left: 10px;
+    margin-top: 25px;
+}
+
+/* button and link */
+a:link, a:visited, a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn:hover {
+    background-color: white;
+    border-color: #EFC81A;
+    color: #EFC81A;
 }

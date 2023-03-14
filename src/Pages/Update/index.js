@@ -5,7 +5,8 @@ import axios from "axios";
 import NavbarMenu from "../../Components/NavbarMenu";
 
 let token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1ZDI4ZDI2LWM4YmEtNGFiOC1iOTIyLWYyYzk5OWQzYzc4MiIsImVtYWlsIjoiaXJAeWFob28uY28uaWQiLCJmdWxsbmFtZSI6Imlyc3lhZCByYW1hZGhhbiIsInByb2ZpbGVwaWMiOm51bGwsImlzX3ZlcmlmIjowLCJvdHAiOm51bGwsInRpbWVfY3JlYXRlIjoiMjAyMy0wMi0yNlQxOTowNDozMy42OTNaIiwiaWF0IjoxNjc4NjI1OTQxLCJleHAiOjE2Nzk5Mzk5NDF9.g6702GmM9M1m8-HZux9mOq3EYA6Vj3chhI51I7duyYM';
-let url = 'http://localhost:4000/recipe'
+// let url = 'http://localhost:4000/recipe'
+let url = process.env.REACT_APP_API_KEY
 
 export default function Update() {
     const [inputData, setInputData] = useState({
@@ -54,15 +55,15 @@ export default function Update() {
     return (
         <div>
             <NavbarMenu />
-        <h2 className='text-center'>Add Menu</h2>
+        <h2 className='text-center'>Edit</h2>
         <form onSubmit={postForm} className="container">
           <input type="text" value={inputData.title} name="title" placeholder='Title' required onChange={handleChange} className="form-control my-3" />
           <input type="text" value={inputData.ingredient} name="ingredient" placeholder='Ingredient' required onChange={handleChange} className="form-control my-3" />
           <input type="file" name="image" required onChange={handleChangeImage} className="form-control my-3" />
-          <button type='submit' className='btn btn-warning my-5'>Add This Menu!</button>
+          <button type='submit' className='btn btn-warning my-5'>Update</button>
         </form>
         <div className="container">
-          { showAlert ? (<div className="alert alert-success" role="alert" onClick={() => setShowAlert(false)}>Success Update This Menu!</div>) : "" }
+          { showAlert ? (<div className="alert alert-success" role="alert" onClick={() => setShowAlert(false)}>Success update this recipe!</div>) : "" }
         </div>
         </div>
     )

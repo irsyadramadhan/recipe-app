@@ -3,6 +3,7 @@ import Home from "../Pages/Home";
 import Profile from "../Pages/Profile";
 import Add from "../Pages/Add";
 import Update from "../Pages/Update";
+import Details from "../Pages/Details";
 
 function App() {
     return(
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/add" element={<Add />} />
                 <Route path="/update/:id" element={<Update />} />
+                <Route path="/details/:id" element={<Details />} />
             </Routes>
         </BrowserRouter>
     )
