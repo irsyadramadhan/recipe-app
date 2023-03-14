@@ -5,7 +5,6 @@ import NavbarMenu from "../../Components/NavbarMenu";
 import Footer from "../../Components/Footer/index";
 import '../../style.css';
 
-// let url = 'http://localhost:4000/recipe'
 let url = process.env.REACT_APP_API_KEY
 
 export default function Details() {
