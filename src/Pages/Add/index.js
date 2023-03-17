@@ -57,12 +57,12 @@ export default function Add() {
   return (
     <div>
         <NavbarMenu />
-        <h2 className='text-center'>Add</h2>
-        <form onSubmit={postForm} className="container">
+        <h2 className='text-center' style={{color: "#2E266F", marginBottom: "50px", marginTop: "50px"}}>Add New Recipe!</h2>
+        <form onSubmit={postForm} className="container" style={{width: "50%"}}>
           <input type="text" value={inputData.title} name="title" placeholder='Title' required onChange={handleChange} className="form-control my-3" />
           <input type="text" value={inputData.ingredient} name="ingredient" placeholder='Ingredient' required onChange={handleChange} className="form-control my-3" />
           <input type="file" name="image" required onChange={handleChangeImage} className="form-control my-3" />
-          <button type='submit' className='btn btn-warning my-5'>Post</button>
+          <button type='submit' className='btn btn-warning my-3'>Post</button>
         </form>
         <div className="container">
           { showAlert ? (<div className="alert alert-success" role="alert" onClick={() => setShowAlert(false)}>Success add this recipe!</div>) : "" }

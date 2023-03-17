@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NavbarMenu from "../../Components/NavbarMenu";
 import Footer from "../../Components/Footer/index";
-import '../../style.css';
 
 let url = process.env.REACT_APP_API_KEY
 
@@ -13,52 +12,38 @@ export default function Details() {
     const getData = () => {
         axios.get(url + `/${id}`).then((res) => {
             console.log(res);
-            setData(res.data.result);
+            setData(res.data.data);
         }).catch((err) => {
             console.log(err);
         })
     }
-
-    const mystyle = {
-        width: "550px",
-        height: "350px"
-    };
 
     useEffect(() => {
         getData();
     }, [])
   
     return (
-    <div>
+    <div style={{minHeight: "100vh", position: "relative", paddingBottom: "192.29px"}}>
         <NavbarMenu />
         <div className="container">
-            <h3>Details</h3>
-            <div className="container my-3">
+            <div className="container">
                 {data?.map((item, index) => (
                     <div key={index}>
-                        <h1 className="my-text-blue">{item.title}</h1>
-                        <div className="text-center my-5">
-                            <img src={item.image} alt="" style={mystyle} />
+                        <div className="container text-center">
+                            <h1 style={{fontWeight: "bold", color: "#2E266F", marginTop: "25px", marginBottom: "25px"}}>{item.title}</h1>
+                            <img className="img-thumbnail" src={item.image} alt="" style={{width: "500px", height: "300px", marginBottom: "50px"}}/>
                         </div>
-                        <div className="container my-3">
-                            <h5>Ingredient:</h5>
-                            <h6>{item.ingredient}</h6>
-                        </div>
-                        <div className="container my-3">
-                            <h5>Creator: {item.creator}</h5>
-                        </div>
-                        <div className="container my-3">
-                            <h5>Time Create: {item.time_create}</h5>
+                        <div className="container" style={{borderLeft: "25px solid #EFC81A"}}>
+                            <span style={{fontWeight: "bold", fontSize: "17pt"}}>Ingredient:</span>
+                            <br />
+                            <span style={{fontSize: "16pt"}}>{item.ingredient}</span>
+                            <br />
+                            <span>Created by: {item.creator} on {item.time_create}</span>
                         </div>
                     </div>
                 ))}
             </div>
             <br />
-            <div className="container my-6">
-                <h3>Write your Comments!</h3>
-                <textarea className="form-control" name="" id="" cols="30" rows="10" style={{resize: "none"}}></textarea>
-                <button className="btn btn-lg btn-warning my-5">Post</button>
-            </div>
         </div>
         <Footer />
     </div>

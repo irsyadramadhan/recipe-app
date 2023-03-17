@@ -3,28 +3,13 @@ import React from 'react';
 class Footer extends React.Component {
   render() {
     return (
-    <footer>
-      <div className="container">
-        <div className="row firstRow">
-          <div className="col-lg-2"></div>
-          <div className="col-lg-8">
-            <h1 className="text-center my-text-blue">Eat, Cook, Repeat</h1>
-            <p className="text-center">Share Your Best Recipe by Uploading Here!</p>
-          </div>
-          <div className="col-lg-2"></div>
+      <footer className="py-5" style={{backgroundColor: "#EFC81A", position: "absolute", left: 0, bottom: 0, right: 0}}>
+        <div className="container text-center" style={{color: "#2E266F"}}>
+          <h1>Eat, Cook, Repeat</h1>
+          <br />
+          <small className="text-50">&copy; Copyright by Pijar Camp. All rights reserved.</small>
         </div>
-        <div className="row secondRow">
-          <div className="col-lg-2"></div>
-          <div className="col-lg-8 text-center">
-            <a className="link-secondary" href="#">Product</a>
-            <a className="link-secondary" href="#">Company</a>
-            <a className="link-secondary" href="#">Learn More</a>
-            <a className="link-secondary" href="#">Get in Touch</a>
-          </div>
-          <div className="col-lg-2"></div>
-        </div>
-      </div>
-    </footer>
+      </footer>
     )
   }
 }
