@@ -3,11 +3,14 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavbarMenu from '../../Components/NavbarMenu'
 import Footer from '../../Components/Footer'
+import { useSelector } from 'react-redux';
 
 let url = process.env.REACT_APP_API_KEY
 let token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1ZDI4ZDI2LWM4YmEtNGFiOC1iOTIyLWYyYzk5OWQzYzc4MiIsImVtYWlsIjoiaXJAeWFob28uY28uaWQiLCJmdWxsbmFtZSI6Imlyc3lhZCByYW1hZGhhbiIsInByb2ZpbGVwaWMiOm51bGwsImlzX3ZlcmlmIjowLCJvdHAiOm51bGwsInRpbWVfY3JlYXRlIjoiMjAyMy0wMi0yNlQxOTowNDozMy42OTNaIiwiaWF0IjoxNjc4NjI1OTQxLCJleHAiOjE2Nzk5Mzk5NDF9.g6702GmM9M1m8-HZux9mOq3EYA6Vj3chhI51I7duyYM';
 
 export default function Profile() {
+ const user = useSelector((state) => state.user.data) // dari redux
+  
   const [data, setData] = useState()
 
   const deleteData = (id) => {
@@ -46,14 +49,14 @@ export default function Profile() {
     <div style={{minHeight: "100vh", position: "relative", paddingBottom: "192.29px"}}>
         <NavbarMenu />
         <div className="container">
+        <h2 style={{color: "#2E266F"}}>{user.fullname}'s Recipe</h2>
         {data?.map((item,index)=>(
           <div key={index+1}>
-              <h2 style={{color: "#2E266F"}}>{item.creator}'s Recipe</h2>
               <div className="row my-5">
                 <div className="col-3">
                   <img className='img-thumbnail' src={item.image} alt="" style={{width: "280px", height: "200px"}} />
                 </div>
-                <div className="col-3" style={{borderLeft: "10px solid #EFC81A"}}>
+                <div className="col-6" style={{borderLeft: "10px solid #EFC81A"}}>
                   <Link to={`/details/${item.id}`}>
                         <h2 style={{color: "#2E266F", fontWeight: "bold"}}>{item.title}</h2>
                   </Link>
