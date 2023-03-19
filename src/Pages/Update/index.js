@@ -1,13 +1,20 @@
 
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import NavbarMenu from "../../Components/NavbarMenu";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { updateMenu } from "../../Storages/Actions/menu";
 
-let token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1ZDI4ZDI2LWM4YmEtNGFiOC1iOTIyLWYyYzk5OWQzYzc4MiIsImVtYWlsIjoiaXJAeWFob28uY28uaWQiLCJmdWxsbmFtZSI6Imlyc3lhZCByYW1hZGhhbiIsInByb2ZpbGVwaWMiOm51bGwsImlzX3ZlcmlmIjowLCJvdHAiOm51bGwsInRpbWVfY3JlYXRlIjoiMjAyMy0wMi0yNlQxOTowNDozMy42OTNaIiwiaWF0IjoxNjc4NjI1OTQxLCJleHAiOjE2Nzk5Mzk5NDF9.g6702GmM9M1m8-HZux9mOq3EYA6Vj3chhI51I7duyYM';
-let url = process.env.REACT_APP_API_KEY
+// let token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1ZDI4ZDI2LWM4YmEtNGFiOC1iOTIyLWYyYzk5OWQzYzc4MiIsImVtYWlsIjoiaXJAeWFob28uY28uaWQiLCJmdWxsbmFtZSI6Imlyc3lhZCByYW1hZGhhbiIsInByb2ZpbGVwaWMiOm51bGwsImlzX3ZlcmlmIjowLCJvdHAiOm51bGwsInRpbWVfY3JlYXRlIjoiMjAyMy0wMi0yNlQxOTowNDozMy42OTNaIiwiaWF0IjoxNjc4NjI1OTQxLCJleHAiOjE2Nzk5Mzk5NDF9.g6702GmM9M1m8-HZux9mOq3EYA6Vj3chhI51I7duyYM';
+// let url = process.env.REACT_APP_API_KEY
 
 export default function Update() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const update_menu = useSelector((state) => state.update_menu);
+
     const [inputData, setInputData] = useState({
         title: "", ingredient: "", category_id: 2
       })
@@ -36,19 +43,7 @@ export default function Update() {
         formData.append("category_id", inputData.category_id)
         formData.append("image", image)
         console.log(formData)
-        axios.put(url+`/${id}`, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "Authorization": token
-          }
-        }).then((res) => {
-          setShowAlert(true) //<---
-          console.log('update data success')
-          console.log(res)
-        }).catch((err) => {
-          console.log('update data fail')
-          console.log(err)
-        })
+        dispatch(updateMenu(formData, id, navigate));
       }
 
     return (
@@ -63,6 +58,8 @@ export default function Update() {
         </form>
         <div className="container">
           { showAlert ? (<div className="alert alert-success" role="alert" onClick={() => setShowAlert(false)}>Success update this recipe!</div>) : "" }
+          {update_menu.isLoading && <p>Loading...</p>}
+          {update_menu.errorMessage}
         </div>
         </div>
     )

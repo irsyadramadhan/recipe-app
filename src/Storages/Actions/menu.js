@@ -54,6 +54,26 @@ export const addMenu = (data, navigate) => async (dispatch) => {
     }
 }
 
+export const updateMenu = (data, id, navigate) => async (dispatch) => {
+    try {
+        const token = localStorage.getItem("token");
+        let headers  = {
+            headers: {"Content-Type": "multipart/form-data", "Authorization": `Bearer ${token}`}
+        }
+        dispatch({type: 'UPDATE_MENU_PENDING'});
+        const result = await axios.put(`${process.env.REACT_APP_API_KEY}/recipe/${id}`, data, headers);
+        console.log(result);
+        const payload = result.data
+        console.log(payload);
+        dispatch({type: 'UPDATE_MENU_SUCCESS', payload});
+        navigate('/profile');
+    } catch(err) {
+        dispatch({type:'UPDATE_MENU_FAILED', payload: err.response.data.message})
+        console.log("loginUser Error");
+        console.log(err);
+    }
+}
+
 export const deleteMenu = (id) => async (dispatch) => {
     try {
         const token = localStorage.getItem("token");
