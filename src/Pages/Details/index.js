@@ -10,7 +10,7 @@ export default function Details() {
     const [data, setData] = useState(); // <---------------
     const {id} = useParams();
     const getData = () => {
-        axios.get(url + `/${id}`).then((res) => {
+        axios.get(`${url}/recipe/${id}`).then((res) => {
             console.log(res);
             setData(res.data.data);
         }).catch((err) => {

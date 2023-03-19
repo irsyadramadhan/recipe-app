@@ -3,25 +3,21 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavbarMenu from '../../Components/NavbarMenu'
 import Footer from '../../Components/Footer/index'
+import { useDispatch, useSelector } from "react-redux";
+import { getMenu } from '../../Storages/Actions/menu'
 
-let url = process.env.REACT_APP_API_KEY
+// let url = process.env.REACT_APP_API_KEY
 
 export default function Home() {
-  console.log(process.env.REACT_APP_API_KEY)
-  const [data, setData] = useState()
+  // console.log(url)
+  // const [data, setData] = useState()
   const [search, setSearch] = useState('')
 
-  const getData = () => {
-    axios.get(url).then((res) => {
-      console.log(res);
-      setData(res.data.data);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
+  const menu = useSelector((state) => state.menu)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    getData();
+    dispatch(getMenu());
   }, [])
 
   return (
@@ -30,7 +26,7 @@ export default function Home() {
         <div className="container">
         <input className='form-control my-3' type="text" placeholder='Search Recipe' onChange={e => setSearch(e.target.value)}/>
           <div> 
-            {data?.filter((item) => {
+            {menu.data?.filter((item) => {
               if (search === '') {
                 return item;
               } else if (item.title.toLowerCase().includes(search.toLowerCase())) {

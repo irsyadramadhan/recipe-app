@@ -2,11 +2,17 @@
 import { useState } from 'react';
 import axios from 'axios';
 import NavbarMenu from '../../Components/NavbarMenu';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addMenu } from '../../Storages/Actions/menu';
 
-let token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1ZDI4ZDI2LWM4YmEtNGFiOC1iOTIyLWYyYzk5OWQzYzc4MiIsImVtYWlsIjoiaXJAeWFob28uY28uaWQiLCJmdWxsbmFtZSI6Imlyc3lhZCByYW1hZGhhbiIsInByb2ZpbGVwaWMiOm51bGwsImlzX3ZlcmlmIjowLCJvdHAiOm51bGwsInRpbWVfY3JlYXRlIjoiMjAyMy0wMi0yNlQxOTowNDozMy42OTNaIiwiaWF0IjoxNjc4NjI1OTQxLCJleHAiOjE2Nzk5Mzk5NDF9.g6702GmM9M1m8-HZux9mOq3EYA6Vj3chhI51I7duyYM';
-let url = process.env.REACT_APP_API_KEY
+// let token = `Bearer ${process.env.REACT_APP_TOKEN}`
+// let url = process.env.REACT_APP_API_KEY
 
 export default function Add() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const add_menu = useSelector((state) => state.add_menu);
   
   const [inputData, setInputData] = useState({
     title: "", ingredient: "", category_id: 2
@@ -36,19 +42,7 @@ export default function Add() {
     formData.append("category_id", inputData.category_id)
     formData.append("image", image)
     console.log(formData)
-    axios.post(url, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        "Authorization": token
-      }
-    }).then((res) => {
-      setShowAlert(true) //<---
-      console.log('input data success')
-      console.log(res)
-    }).catch((err) => {
-      console.log('input data fail')
-      console.log(err)
-    })
+    dispatch(addMenu(formData, navigate));
   }
 
   //alert
@@ -66,6 +60,8 @@ export default function Add() {
         </form>
         <div className="container">
           { showAlert ? (<div className="alert alert-success" role="alert" onClick={() => setShowAlert(false)}>Success add this recipe!</div>) : "" }
+          {add_menu.isLoading && <p>Loading...</p>}
+          {add_menu.errorMessage}
         </div>
     </div>
   )
