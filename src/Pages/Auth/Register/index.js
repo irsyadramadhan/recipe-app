@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NavbarMenu from "../../../Components/NavbarMenu";
 import { registerUser } from "../../../Storages/Actions/auth";
+import { Link } from 'react-router-dom';
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -23,15 +24,16 @@ export default function Register() {
     return (
         <div>
             <NavbarMenu />
-            <h2 className='text-center' style={{color: "#2E266F", marginBottom: "50px", marginTop: "50px"}}>Create New Account!</h2>
+            <h2 className='text-center' style={{color: "#2E266F", marginBottom: "50px", marginTop: "50px"}}>Register</h2>
             <form onSubmit={postData} className="container" style={{width: "50%"}}>
                 <input type="email" className="form-control my-3" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
                 <input type="password" className="form-control my-3" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" />
                 <input type="text" className="form-control my-3" value={fullname} onChange={(e) => setFullname(e.target.value)} placeholder="Fullname" />
-                <button type="submit" className="btn btn-warning my-3">Login</button>
+                <button type="submit" className="btn btn-warning my-3">Create Account</button>
+                <p>Already have an account? <Link to={'/login'}><span style={{color: "#EFC81A"}}>Log in.</span></Link></p>
+                {user.isLoading && <p>Loading...</p>}
+                {user.errorMessage}
             </form>
-            {user.isLoading && <p>Loading...</p>}
-            {user.errorMessage}
         </div>
     )
 }

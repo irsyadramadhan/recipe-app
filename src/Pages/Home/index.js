@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom'
 import NavbarMenu from '../../Components/NavbarMenu'
 import Footer from '../../Components/Footer/index'
 import { useDispatch, useSelector } from "react-redux";
-import { getMenu } from '../../Storages/Actions/menu'
+import { getMenu } from '../../Storages/Actions/menu';
+import { Pagination } from '../../Components/Pagination';
 
 
 export default function Home() {
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage]= useState(5);
+
   const [search, setSearch] = useState('')
 
   const menu = useSelector((state) => state.menu)
@@ -16,13 +21,21 @@ export default function Home() {
     dispatch(getMenu());
   }, [])
 
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = menu.data?.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div style={{minHeight: "100vh", position: "relative", paddingBottom: "192.29px"}}>
         <NavbarMenu />
         <div className="container">
         <input className='form-control my-3' type="text" placeholder='Search Recipe' onChange={e => setSearch(e.target.value)}/>
           <div> 
-            {menu.data?.filter((item) => {
+            {currentPosts?.filter((item) => {
               if (search === '') {
                 return item;
               } else if (item.title.toLowerCase().includes(search.toLowerCase())) {
@@ -49,6 +62,7 @@ export default function Home() {
                   </div>
                 </div>
             ))}
+            <Pagination postsPerPage={postsPerPage} totalPosts={menu.data?.length} paginate={paginate} />
           </div>
           </div>
           <br />
