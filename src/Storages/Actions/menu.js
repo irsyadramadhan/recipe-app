@@ -29,7 +29,7 @@ export const getMyMenu = () => async (dispatch) => {
         dispatch({type: 'GET_MYMENU_SUCCESS', payload: menu});
     } catch(err) {
         dispatch({type:'GET_MYMENU_FAILED', payload: err.response.data.message})
-        console.log("getMenu Error");
+        console.log("getMyMenu Error");
         console.log(err);
     }
 }
@@ -49,7 +49,7 @@ export const addMenu = (data, navigate) => async (dispatch) => {
         navigate('/profile');
     } catch(err) {
         dispatch({type:'ADD_MENU_FAILED', payload: err.response.data.message})
-        console.log("loginUser Error");
+        console.log("addMenu Error");
         console.log(err);
     }
 }
@@ -69,7 +69,7 @@ export const updateMenu = (data, id, navigate) => async (dispatch) => {
         navigate('/profile');
     } catch(err) {
         dispatch({type:'UPDATE_MENU_FAILED', payload: err.response.data.message})
-        console.log("loginUser Error");
+        console.log("updateMenu Error");
         console.log(err);
     }
 }
@@ -88,7 +88,22 @@ export const deleteMenu = (id) => async (dispatch) => {
         dispatch({type: 'DELETE_MENU_SUCCESS', payload: menu});
     } catch(err) {
         dispatch({type:'DELETE_MENU_FAILED', payload: err.response.data.message})
-        console.log("getMenu Error");
+        console.log("deleteMenu Error");
+        console.log(err);
+    }
+}
+
+export const getDetailMenu = (id) => async (dispatch) => {
+    try {
+        dispatch({type: 'GET_DETAILMENU_PENDING'});
+        const result = await axios.get(`${process.env.REACT_APP_API_KEY}/recipe/${id}`);
+        console.log(result);
+        const menu = result.data.data
+        console.log(menu);
+        dispatch({type: 'GET_DETAILMENU_SUCCESS', payload: menu});
+    } catch(err) {
+        dispatch({type:'GET_DETAILMENU_FAILED', payload: err.response.data.message})
+        console.log("getDetailMenu Error");
         console.log(err);
     }
 }

@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NavbarMenu from '../../Components/NavbarMenu'
 import Footer from '../../Components/Footer/index'
 import { useDispatch, useSelector } from "react-redux";
 import { getMenu } from '../../Storages/Actions/menu'
 
-// let url = process.env.REACT_APP_API_KEY
 
 export default function Home() {
-  // console.log(url)
-  // const [data, setData] = useState()
   const [search, setSearch] = useState('')
 
   const menu = useSelector((state) => state.menu)

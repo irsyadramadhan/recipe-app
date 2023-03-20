@@ -1,13 +1,9 @@
 
 import { useState } from 'react';
-import axios from 'axios';
 import NavbarMenu from '../../Components/NavbarMenu';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addMenu } from '../../Storages/Actions/menu';
-
-// let token = `Bearer ${process.env.REACT_APP_TOKEN}`
-// let url = process.env.REACT_APP_API_KEY
 
 export default function Add() {
   const navigate = useNavigate();

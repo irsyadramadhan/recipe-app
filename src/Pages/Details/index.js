@@ -1,25 +1,19 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import NavbarMenu from "../../Components/NavbarMenu";
 import Footer from "../../Components/Footer/index";
-
-let url = process.env.REACT_APP_API_KEY
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailMenu } from "../../Storages/Actions/menu";
 
 export default function Details() {
-    const [data, setData] = useState(); // <---------------
+    const [data, setData] = useState();
     const {id} = useParams();
-    const getData = () => {
-        axios.get(`${url}/recipe/${id}`).then((res) => {
-            console.log(res);
-            setData(res.data.data);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
+    
+    const menu = useSelector((state) => state.detail_menu);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        getData();
+        dispatch(getDetailMenu(id));
     }, [])
   
     return (
@@ -27,7 +21,7 @@ export default function Details() {
         <NavbarMenu />
         <div className="container">
             <div className="container">
-                {data?.map((item, index) => (
+                {menu.data?.map((item, index) => (
                     <div key={index}>
                         <div className="container text-center">
                             <h1 style={{fontWeight: "bold", color: "#2E266F", marginTop: "25px", marginBottom: "25px"}}>{item.title}</h1>
