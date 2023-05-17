@@ -7,8 +7,9 @@
 3. [Packages](#packages)
 4. [Features](#features)
 5. [Env Variables](#env-variables)
-6. [Installation](#installation)
-7. [Screenshots](#screenshots)
+6. [App Link](#app-link)
+7. [Run in Local Machine](#run-in-local-machine)
+8. [Screenshots](#screenshots)
 
 ## About the Project
 
@@ -48,7 +49,11 @@ Recipe-app is a web-based recipe sharing application, where users can post, upda
 
 - REACT_APP_API_KEY
 
-## Installation
+## App link
+
+- https://fe-5o0wjooxz-irsyadramadhan.vercel.app/home
+
+## Run in Local Machine
 
 1. Clone repository
 
@@ -66,6 +71,12 @@ cd recipe_app
 
 ```
 npm install
+```
+
+4. Start app in development server
+
+```
+npm start
 ```
 
 ## Screenshots
