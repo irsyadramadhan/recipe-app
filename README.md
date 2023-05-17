@@ -13,7 +13,7 @@
 
 ## About the Project
 
-Recipe-app is a web-based recipe sharing application, where users can post, update, and delete their recipes.
+recipe-app is a web-based recipe sharing application, where users can post, update, and delete their recipes.
 
 ## Tech Stack
 
