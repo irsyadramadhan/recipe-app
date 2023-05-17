@@ -1,4 +1,4 @@
-# recipe-app
+# Recipe App
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@
 
 ## About the Project
 
-recipe-app is a web-based recipe sharing application, where users can post, update, and delete their recipes.
+Recipe App is a web-based recipe sharing application, where users can post, update, and delete their recipes.
 
 ## Tech Stack
 
@@ -64,7 +64,7 @@ git clone https://github.com/irsyadramadhan/recipe-app.git
 2. Change directory
 
 ```
-cd recipe_app
+cd recipe-app
 ```
 
 3. Install dependencies
