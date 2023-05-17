@@ -7,8 +7,8 @@
 3. [Packages](#packages)
 4. [Features](#features)
 5. [Env Variables](#env-variables)
-6. [App Link](#app-link)
-7. [Run in Local Machine](#run-in-local-machine)
+6. ![App Link](#app-link)
+7. ![Run in Local Machine](#run-in-local-machine)
 8. [Screenshots](#screenshots)
 
 ## About the Project
@@ -49,7 +49,7 @@ Recipe-app is a web-based recipe sharing application, where users can post, upda
 
 - REACT_APP_API_KEY
 
-## App link
+## App Link
 
 - https://fe-5o0wjooxz-irsyadramadhan.vercel.app/home
 
