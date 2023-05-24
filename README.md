@@ -1,4 +1,7 @@
-# Recipe App
+<div align="center">
+  <img width="100" height="100" src="https://res.cloudinary.com/dlv8ulgc0/image/upload/v1684899445/Logo/logo-recipes_cvacpf.png"/>
+  <p>Recipe App</p>
+</div>
 
 ## Table of Contents
 
@@ -16,12 +19,12 @@ Recipe App is a web-based recipe sharing application, where users can post, upda
 
 ### Tech Stack
 
-- Node JS
-- Express JS
-- PostgreSQL
-- React JS
+- [Node JS](https://nodejs.org/en)
+- [Express JS](https://expressjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [React JS](https://react.dev/)
 
-### App Link
+### Demo
 
 - https://fe-5o0wjooxz-irsyadramadhan.vercel.app/home
 
@@ -118,4 +121,4 @@ git push origin feature/NewFeature
 
 ## License
 
-Distributed under the MIT License.
+Distributed under the [MIT](/LICENSE) License.
