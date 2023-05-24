@@ -3,57 +3,35 @@
 ## Table of Contents
 
 1. [About the Project](#about-the-project)
-2. [Tech Stack](#tech-stack)
-3. [Packages](#packages)
-4. [Features](#features)
-5. [Env Variables](#env-variables)
-6. [App Link](#app-link)
-7. [Run in Local Machine](#run-in-local-machine)
-8. [Screenshots](#screenshots)
+2. [Getting Started](#getting-started)
+3. [Screenshots](#screenshots)
+4. [Contribute](#contribute)
+5. [Related Project](#related-project)
+6. [Developers](#developers)
+7. [License](#license)
 
 ## About the Project
 
 Recipe App is a web-based recipe sharing application, where users can post, update, and delete their recipes.
 
-## Tech Stack
+### Tech Stack
 
 - Node JS
 - Express JS
 - PostgreSQL
 - React JS
 
-## Packages
-
-- axios
-- bootstrap
-- react
-- react-bootstrap
-- react-dom
-- react-redux
-- react-router-dom
-- react-scripts
-- redux
-- redux-logger
-- redux-thunk
-- sass
-- web-vitals
-
-## Features
-
-- CRUD
-- File Upload
-- Authentication / User Login
-- Authorization
-
-## Env Variables
-
-- REACT_APP_API_KEY
-
-## App Link
+### App Link
 
 - https://fe-5o0wjooxz-irsyadramadhan.vercel.app/home
 
-## Run in Local Machine
+## Getting Started
+
+### Prerequisites
+
+- [Node JS](https://nodejs.org/en)
+
+### Installation
 
 1. Clone repository
 
@@ -73,7 +51,13 @@ cd recipe-app
 npm install
 ```
 
-4. Start app in development server
+4. Add environment variables
+
+```
+REACT_APP_API_KEY=https://zany-gray-cobra-shoe.cyclic.app/
+```
+
+5. Start app in development server
 
 ```
 npm start
@@ -100,3 +84,38 @@ npm start
 | Insert | Update |
 | ----------- | ----------- |
 | ![insert](https://github.com/irsyadramadhan/recipe-app/blob/main/src/screenshots/insert.png) | ![update](https://github.com/irsyadramadhan/recipe-app/blob/main/src/screenshots/update.png) |
+
+## Contribute
+
+1. Fork this project
+2. Create new branch
+
+```
+git checkout -b feature/NewFeature
+```
+
+3. Commit changes
+
+```
+git commit -m "Add some NewFeature"
+```
+
+4. Push to origin
+
+```
+git push origin feature/NewFeature
+```
+
+5. Open pull request
+
+## Related Project
+
+- [recipe-app-backend](https://github.com/irsyadramadhan/recipe-app-backend)
+
+## Developers
+
+- [Irsyad Ramadhan](https://github.com/irsyadramadhan)
+
+## License
+
+Distributed under the MIT License.
