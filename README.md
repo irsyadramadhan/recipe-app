@@ -57,7 +57,7 @@ npm install
 4. Add environment variables
 
 ```
-REACT_APP_API_KEY=https://zany-gray-cobra-shoe.cyclic.app/
+REACT_APP_API_KEY=https://zany-gray-cobra-shoe.cyclic.app
 ```
 
 5. Start app in development server
